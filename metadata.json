@@ -1,0 +1,33 @@
+{
+  "description": "Manages MySQL.",
+  "checksums": {
+    "README.rdoc": "4a05699df5cb0dc27477c83ca4e14246",
+    "manifests/package.pp": "1c99b31d561a18b17a39c1890111fc9a",
+    "manifests/server/config.pp": "4a5a427fd56050f5ccec30f9f6959985",
+    "COPYING": "b61584fc82c890be58a123372f2b831f",
+    "manifests/server/service.pp": "cac6c05154f76aa5c791abfc1c1a895d",
+    "NOTICE": "b70516c106beaee3679e427d486ab58b",
+    "manifests/server/package.pp": "22b5e2f0f057c1c9cd9a567c03843362",
+    "CREDITS": "ed3b4b7d9c7ce61042b0e3c17ece19b9",
+    "Modulefile": "13815306902a3df69061060e81a473a3",
+    "manifests/init.pp": "27fd0c38a439238c1272d006e34adc20",
+    "manifests/server.pp": "f73b10e1905c472d8aeca37444e40737",
+    "manifests/params.pp": "2ebbe9609e9ce6c3ff5e94ead4159068"
+  },
+  "project_page": "https://github.com/vladgh/puppet-module-mysql",
+  "license": "Apache 2.0",
+  "source": "https://github.com/vladgh/puppet-module-mysql",
+  "version": "1.0.0",
+  "types": [
+
+  ],
+  "author": "Vlad Ghinea",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 2.3.1"
+    }
+  ],
+  "summary": "Manages MySQL.",
+  "name": "vladgh-mysql"
+}
