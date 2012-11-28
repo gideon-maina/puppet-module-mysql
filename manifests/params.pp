@@ -41,7 +41,7 @@ class mysql::params {
   $status = 'enabled'
 
   # mysql root password
-  $root_password = hiera('mysql_root_password', undef)
+  $root_password = hiera('mysql::server::root_password', undef)
 
 
   #### Internal module values
