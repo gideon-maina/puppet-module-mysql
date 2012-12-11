@@ -8,4 +8,4 @@ source       'https://github.com/vladgh/puppet-module-mysql'
 project_page 'https://github.com/vladgh/puppet-module-mysql'
 
 dependency   'puppetlabs-stdlib', '>= 2.3.1'
-
+dependency   'vladgh-common', '>= 1.0.0'

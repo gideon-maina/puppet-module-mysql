@@ -26,6 +26,10 @@ This module has got the following module dependencies:
   * Check {STDLIB source code at GitHub}[http://j.mp/R2LoYk] to get a listing of
     available functions.
 
+[*common*]
+  Version 1.0.0 or newer.
+  * {Common Module on GitHub}[http://j.mp/R2HFds]
+
 
 === License, Copyright
 
