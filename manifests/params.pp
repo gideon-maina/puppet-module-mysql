@@ -25,7 +25,7 @@
 #
 # === Authors
 #
-# * Vlad Ghinea <mailto:vgit@vladgh.com>
+# * Vlad Ghinea <mailto:vg@vladgh.com>
 #
 class mysql::params {
 
@@ -41,7 +41,10 @@ class mysql::params {
   $status = 'enabled'
 
   # mysql root password
-  $root_password = hiera('mysql::server::root_password', undef)
+  $root_password = undef
+
+  # files source path
+  $files_source = 'puppet:///modules/mysql'
 
 
   #### Internal module values
@@ -52,28 +55,19 @@ class mysql::params {
       # client
       $client_package = [ 'mysql-client' ]
       # server
-      $server_package = [ 'mysql-server' ]
-    }
-    default: {
-      fail("\"${module_name}\" provides no package default value for \"${::operatingsystem}\"")
-    }
-  }
-
-  # service parameters
-  case $::operatingsystem {
-    'Debian', 'Ubuntu': {
+      $server_package     = [ 'mysql-server' ]
       $service_name       = 'mysql'
       $service_hasrestart = true
       $service_hasstatus  = false
       $service_pattern    = 'mysqld'
+      $config             = '/etc/mysql/my.cnf'
+      $debian             = '/etc/mysql/debian.cnf'
     }
     default: {
-      fail("\"${module_name}\" provides no service parameters for \"${::operatingsystem}\"")
+      fail("\"${module_name}\" is not supported on \"${::operatingsystem}\"")
     }
   }
 
-  $config         = '/etc/mysql/my.cnf'
-  $debian         = '/etc/mysql/debian.cnf'
   $owner          = 'root'
   $group          = 'root'
   $mode           = '0644'

@@ -5,13 +5,10 @@ Manages MySQL.
 Have a look at the main module class (<tt>init.pp</tt> and <tt>server.pp</tt>)
 to see what this module does on a node plus usage examples.
 
-Read the main {README}[http://j.mp/TAEVWT] file for important information
-regarding how these modules are organized and what you need to run them.
-
 
 === Compatibility
 
-This module is designed to work with Puppet version 2.7.x or newer.
+This module is designed to work with Puppet version 3.x or newer.
 
 
 === Requirements
@@ -19,19 +16,11 @@ This module is designed to work with Puppet version 2.7.x or newer.
 This module has got the following module dependencies:
 
 [*stdlib*]
-  Version 2.3.1 or newer. Standard library of useful resources by Puppet Labs.
-  It provides functions like <tt>validate_*()</tt>, <tt>is_*()</tt> and
-  <tt>empty()</tt>. More information:
-  * {STDLIB at Puppet Forge}[http://j.mp/UeDJL5]
-  * Check {STDLIB source code at GitHub}[http://j.mp/R2LoYk] to get a listing of
-    available functions.
-
-[*common*]
-  Version 1.0.0 or newer.
-  * {Common Module on GitHub}[http://j.mp/R2HFds]
+  Version 4.0.0 or newer. Standard library of useful resources by Puppet Labs.
+  {STDLIB at Puppet Forge}[http://j.mp/UeDJL5]
 
 
 === License, Copyright
 
-See COPYING and NOTICE file in the root directory of this module.
+See LICENSE file in the root directory of this module.
 

@@ -20,7 +20,7 @@
 #
 # === Authors
 #
-# * Vlad Ghinea <mailto:vgit@vladgh.com>
+# * Vlad Ghinea <mailto:vg@vladgh.com>
 #
 class mysql::server::config {
 
@@ -36,29 +36,30 @@ class mysql::server::config {
   #### Configuration
   file {'my.cnf':
     path   => $mysql::params::config,
-    source => sources_array(
-      $::private_files,
-      'mysql/my.cnf',
-      $mysql::params::config
-    ),
+    source => [ "${mysql::server::files_source}/my.cnf", $mysql::params::config ],
     notify => Class['mysql::server::service'],
   }
 
   file{'debian.cnf':
     path   => $mysql::params::debian,
     mode   => $mysql::params::protected_mode,
-    source => sources_array(
-      $::private_files,
-      'mysql/debian.cnf',
-      $mysql::params::debian
-    ),
+    source => [ "${mysql::server::files_source}/debian.cnf", $mysql::params::debian ],
     notify => Class['mysql::server::service'],
   }
 
-  exec {'Set MySQL Password':
-    unless  => "/usr/bin/mysqladmin -uroot -p\"${root_password}\" status",
-    command => "/usr/bin/mysql --defaults-file=${$mysql::params::debian} -e \"use mysql; update user set password=PASSWORD(\\\"${root_password}\\\") where User=\\\"root\\\"; flush privileges;\"",
-    require => File['debian.cnf'],
+  case $::operatingsystem {
+    'Debian', 'Ubuntu': {
+      if $root_password {
+        exec {'Set MySQL Password':
+          unless  => "/usr/bin/mysqladmin -uroot -p\"${root_password}\" status",
+          command => "/usr/bin/mysql --defaults-file=${$mysql::params::debian} -e \"use mysql; update user set password=PASSWORD(\\\"${root_password}\\\") where User=\\\"root\\\"; flush privileges;\"",
+          require => File['debian.cnf'],
+        }
+      }
+    }
+    default: {
+      fail("\"${module_name}\" is not supported on \"${::operatingsystem}\"")
+    }
   }
 
 }

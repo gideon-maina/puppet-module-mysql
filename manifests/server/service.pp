@@ -24,7 +24,7 @@
 #
 # === Authors
 #
-# * Vlad Ghinea <mailto:vgit@vladgh.com>
+# * Vlad Ghinea <mailto:vg@vladgh.com>
 #
 class mysql::server::service {
 
