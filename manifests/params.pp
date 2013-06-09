@@ -43,8 +43,8 @@ class mysql::params {
   # mysql root password
   $root_password = undef
 
-  # files source path
-  $files_source = 'puppet:///modules/mysql'
+  # global files source
+  $source = suffix(pick($::files_sources, ['puppet:///modules/']), $module_name)
 
 
   #### Internal module values

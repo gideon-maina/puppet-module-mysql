@@ -36,14 +36,14 @@ class mysql::server::config {
   #### Configuration
   file {'my.cnf':
     path   => $mysql::params::config,
-    source => [ "${mysql::server::files_source}/my.cnf", $mysql::params::config ],
+    source => [ suffix($mysql::params::source, '/my.cnf'), $mysql::params::config ],
     notify => Class['mysql::server::service'],
   }
 
   file{'debian.cnf':
     path   => $mysql::params::debian,
     mode   => $mysql::params::protected_mode,
-    source => [ "${mysql::server::files_source}/debian.cnf", $mysql::params::debian ],
+    source => [ suffix($mysql::params::source, '/debian.cnf'), $mysql::params::debian ],
     notify => Class['mysql::server::service'],
   }
 
